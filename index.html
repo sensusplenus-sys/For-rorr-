@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For rorr🦖</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    overflow:hidden;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    width:90%;
+    max-width:400px;
+}
+
+h1{
+    color:#ff4d6d;
+    margin-bottom:15px;
+}
+
+p{
+    color:#555;
+    margin-bottom:20px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.yes{
+    background:#ff4d6d;
+    color:white;
+}
+
+.no{
+    background:#ddd;
+    color:black;
+    margin-left:10px;
+}
+
+.heart{
+    position:absolute;
+    color:red;
+    font-size:25px;
+    animation:naik 3s linear forwards;
+}
+
+@keyframes naik{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-500px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Maok nda ganti setatus jadi pacarrr rorr?</h1>
+    <p>Aku bukan orang bisa ngerangkai kata kata manis dan bukan juga org yang romantis. but ada satu hal yang mau sku bilang. semakin kenall rorr aku jadii makinn nyaman. and now aku sadarr aku SUKA SAMA KAMU RORRRRR</p>
+
+    <button class="yes" onclick="jawab()">Mau tanpa paksaan ❤️</button>
+    <button class="no" id="no">Tidak 😅</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+let hitung = 0;
+
+function pindah(){
+    hitung++;
+
+    if(hitung >= 5){
+        noBtn.innerHTML = "Mau ❤️";
+        noBtn.className = "yes";
+        noBtn.onclick = jawab;
+        return;
+    }
+
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+
+    noBtn.style.position = "fixed";
+    noBtn.style.left = Math.random() * maxX + "px";
+    noBtn.style.top = Math.random() * maxY + "px";
+}
+
+noBtn.addEventListener("mouseover", pindah);
+noBtn.addEventListener("touchstart", pindah);
+noBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    pindah();
+});
+
+function jawab(){
+    document.body.innerHTML = `
+    <div style="text-align:center;color:white;padding:20px;">
+        <h1 style="font-size:50px;">❤️ YEAY ❤️</h1>
+        <h2>Kamu sekarang resmi jadi pacarku 🥰</h2>
+        <p style="margin-top:15px;">Makasih udah nerima aku ❤️</p>
+    </div>
+    `;
+
+    setInterval(()=>{
+        const hati = document.createElement("div");
+        hati.innerHTML = "❤️";
+        hati.classList.add("heart");
+        hati.style.left = Math.random()*100+"vw";
+        hati.style.bottom = "0";
+        document.body.appendChild(hati);
+
+        setTimeout(()=>{
+            hati.remove();
+        },3000);
+    },200);
+}
+</script>
+
+</body>
+</html>
